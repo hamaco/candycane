@@ -45,7 +45,7 @@ class Token extends AppModel
     {
         return $this->deleteAll(
             array(
-                'action <>'      => 'feeds',
+                'NOT'            => array('action' => array('feeds', 'api')),
                 'created_on < ?' => array(time() - $this->validity_time),
             )
         );
