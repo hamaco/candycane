@@ -1,7 +1,7 @@
 <?php
 if( $currentuser[ 'admin' ] )
 {
-	$this->set( 'Sidebar', $this->element( 'admin/sidebar' ) );
+    $this->set( 'Sidebar', $this->element( 'admin/sidebar' ) );
 }
 ?>
 
@@ -39,7 +39,7 @@ if( $currentuser[ 'admin' ] )
   <p><?php echo __('Subprojects'); ?>:
   <?php
   foreach ($sub_project_tree[ $project['id'] ] as $key => $subproject) {
-	  echo $this->Html->link($subproject['name'], array('action' => 'show', 'project_id' => $subproject['identifier']), array('class' => 'icon icon-fav'));
+      echo $this->Html->link($subproject['name'], array('action' => 'show', 'project_id' => $subproject['identifier']), array('class' => 'icon icon-fav'));
   }
 ?></p>
   <?php endif ?>
@@ -61,5 +61,3 @@ if( $currentuser[ 'admin' ] )
 <?php echo __("'Also available in:'"); ?>
 <span><!-- <%= link_to 'Atom', {:format => 'atom', :key => User.current.rss_key}, :class => 'feed' %> --></span>
 </p>
-
-<!-- <% html_title(l(:label_project_plural)) -%> -->

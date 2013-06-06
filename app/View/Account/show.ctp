@@ -1,10 +1,13 @@
 <div class="contextual">
-<?php if ($currentuser['admin'] == 1): ?>
-  <?php echo $this->Html->link(__('Edit'), '/users/edit/'.$user['User']['id'], array('class' => 'icon icon-edit')); ?>
-<?php endif; ?>
+    <?php if ($currentuser['admin'] == 1): ?>
+        <?php echo $this->Html->link(__('Edit'), '/users/edit/'.$user['User']['id'], array('class' => 'icon icon-edit')); ?>
+    <?php endif; ?>
 </div>
 
-<h2><?php echo $this->Candy->avatar($user,array('size' => 72)); ?> <?php echo h($this->Candy->format_username($user['User'])); ?></h2>
+<h2>
+    <?php echo $this->Candy->avatar($user, array('size' => 72)); ?>
+    <?php echo $this->Candy->html_title($this->Candy->format_username($user['User'])); ?>
+</h2>
 
 <div class="splitcontentleft">
 <ul>
@@ -12,7 +15,7 @@
   <li><?php echo __('Email'); ?>: <?php echo $this->Text->autoLinkEmails(h($user['User']['mail']));?></li>
   <?php endif; ?>
 <?php /*
-      
+
   <% for custom_value in @custom_values %>
     <% if !custom_value.value.empty? %>
       <li><%= custom_value.custom_field.name%>: <%=h show_value(custom_value) %></li>
@@ -31,10 +34,10 @@
   <ul>
   <?php foreach($user['Membership'] as $row): ?>
     <li><?php echo $this->Html->link($row['Project']['name'],array(
-		'controller' => 'projects',
-		'action' => 'show',
-		'project_id' => $row['Project']['identifier']
-	)); ?>
+        'controller' => 'projects',
+        'action' => 'show',
+        'project_id' => $row['Project']['identifier']
+    )); ?>
     (<?php echo h($row['Role']['name']) ?>, <?php echo $this->Candy->format_date($row['created_on']) ?>)</li>
   <?php endforeach; ?>
   </ul>
@@ -45,13 +48,13 @@
 
 <?php if ( !empty($events_by_day_data) ): ?>
   <h3><?php echo $this->Html->link(__('Activity'),array(
-	  'controller' => 'projects',
-	  'action' => 'activity',
-	  '?' => array(
-		  'user_id' => $user['User']['id'],
-		  'from' => array_shift(array_keys($events_by_day_data))
-		)
-	)) ?></h3>
+      'controller' => 'projects',
+      'action' => 'activity',
+      '?' => array(
+          'user_id' => $user['User']['id'],
+          'from' => array_shift(array_keys($events_by_day_data))
+        )
+    )) ?></h3>
 
 <p>
 <?php echo __('Reported issues'); ?>:
@@ -82,5 +85,3 @@
 
 <?php endif; ?>
 </div>
-
-<?php $this->Candy->html_title($this->Candy->format_username($user['User']), true); ?>
