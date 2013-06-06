@@ -1,6 +1,5 @@
 <div id="login-form">
 <?php echo $this->Form->create('User', array('url' => '/account/login')); ?>
-<!--  <%= back_url_hidden_field_tag %> -->
 <?php echo $this->Form->hidden('back_url',array('name' => 'back_url','value' => $back_url)); ?>
 
 <table>
