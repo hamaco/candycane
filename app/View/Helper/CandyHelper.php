@@ -100,26 +100,20 @@ class CandyHelper extends AppHelper {
         $view = $this->_View;
         $project = isset($view->viewVars['main_project']) ? $view->viewVars['main_project'] : null;
 
-        if (is_array($str)) {
-            $view->pageTitle = implode(' - ', $str);
-        } else {
-            $view->pageTitle = $str;
+        $view->pageTitle = $str;
+
+        $title = Hash::merge(array(), $str);
+
+        if (!empty($project)) {
+            $title[] = $project['Project']['name'];
         }
 
-        if (!is_array($str)) {
-            $title = Hash::merge(array(), $str);
+        $Settings =& ClassRegistry::getObject('Setting');
+        $title[] = $Settings->app_title;
 
-            if (!empty($project)) {
-                $title[] = $project['Project']['name'];
-            }
+        $str = implode(' - ', $title);
 
-            $Settings =& ClassRegistry::getObject('Setting');
-            $title[] = $Settings->app_title;
-
-            $str = implode(' - ', $title);
-        }
-
-        $view->set('title_for_layout',$str);
+        $view->set('title_for_layout', $str);
 
         return $view->pageTitle;
     }
