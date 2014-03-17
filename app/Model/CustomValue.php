@@ -98,7 +98,7 @@ class CustomValue extends AppModel
       $ret = preg_match('/^[+-]?\d+$/', $this->data[$this->name]['value']);
       break;
     case 'float' :
-      $ret = strval(floatval($this->data[$this->name]['value'])) === $this->data[$this->name]['value'];
+      $ret = strval(floatval($this->data[$this->name]['value'])) == $this->data[$this->name]['value'];
       break;
     case 'date' :
       $ret = preg_match('/^\d{4}-\d{2}-\d{2}$/', $this->data[$this->name]['value']);
