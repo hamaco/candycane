@@ -119,7 +119,7 @@ class CustomFieldHelper extends AppHelper
     if(!empty($custom_field['CustomField']['field_format']) && $custom_field['CustomField']['field_format'] == 'bool') {
       $type = 'checkbox';
     }
-    return $this->Form->input('default_value', array('type'=>$type, 'div'=>false, 'label'=>false));
+    return $this->Form->input('default_value', array('type'=>$type, 'div'=>false, 'label'=>false, 'required'=>false));
   }
 
 /*
